@@ -1,0 +1,7 @@
+html,body { margin: 0; padding: 0;}
+ol,ul,li {list-style: none; text-decoration: none;}
+.navbar{background-color: rgb(111, 115, 128);}
+.navbar li {padding: 10px;}
+.navbar a {text-decoration: none; color: aliceblue; font-size: larger;}
+.flex-lc{display: flex; align-items: center;}
+.flex-cc{display: flex; justify-content: center; align-items: center;}
