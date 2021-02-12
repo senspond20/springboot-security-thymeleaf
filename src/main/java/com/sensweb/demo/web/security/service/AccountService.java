@@ -14,11 +14,14 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AccountService implements UserDetailsService {
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @Autowired
     private AccountRepository accountRepository;
 
@@ -27,11 +30,17 @@ public class AccountService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account = accountRepository.findByEmail(username);
+
+        account.setPassword(passwordEncoder.encode(account.getPassword())); 
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(account.getAutority()));
+        
+        System.out.println("@@@" + account.getPassword());
 
         // 아이디, 비밀번호, 권한 리스트 필요.
         return new User(account.getEmail(), account.getPassword(), authorities);
     }
+
+  
     
 }

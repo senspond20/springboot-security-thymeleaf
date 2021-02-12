@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.Random;
 
 import com.sensweb.demo.web.security.domain.Account;
-
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -23,4 +22,5 @@ public class AccountRepository {
         return (Account) accounts.get(username);
     }
     
+ 
 }
