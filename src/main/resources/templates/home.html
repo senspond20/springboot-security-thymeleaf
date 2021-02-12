@@ -7,7 +7,9 @@
     <title>Spring Security</title>
 </head>
 <body>
-    <h1>Welcome</h1>
-    <p>Click <a th:href="@{/home}">hera</a> to seee a gree</p>
+    <h1>어서오세요 ! [[${#httpServletRequest.remoteUser}]]!</h1>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value ="Sign Out">
+    </form>
 </body>
 </html>

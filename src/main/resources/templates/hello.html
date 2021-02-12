@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security3">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +7,9 @@
     <title>Spring Security Sample</title>
 </head>
 <body>
-    <div>오늘도 힘들게 일을 하고 온 갑돌이는 집에 가려고 한다.</div>
-    <a th:href="@{/home}">goHome</a>
+
+   <form th:action="@{/logout}" method="post">
+        <input type="submit" value ="Sign Out">
+    </form>
 </body>
 </html>

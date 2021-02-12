@@ -32,10 +32,9 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
-        registry.addViewController("/login").setViewName("security/login");
-        registry.addViewController("/home").setViewName("home/index");
-        registry.addViewController("/blog").setViewName("blog/index");
-        registry.addViewController("/about").setViewName("about/index");
+        registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/home").setViewName("home");
+        registry.addViewController("/hello").setViewName("hello");
     }
 
     /* Thyemleaf 설정 */
