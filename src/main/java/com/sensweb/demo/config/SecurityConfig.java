@@ -40,10 +40,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
               //.successForwardUrl("/home")   // 로그인 성공 URL을 설정함
                 // .failureForwardUrl("/login/fail")     // 로그인 실패 URL을 설정함
                                          // login 페이지는 사용자가 접속가능해야하지~
-                .loginProcessingUrl("/dologin")
+                .loginProcessingUrl("/doLogin")
+                .usernameParameter("username")
+                .passwordParameter("password")
                 .successHandler(new LoginSuccessHandler())
                 .and()
                 .logout();
+                // .logoutUrl("/doLogout")
+                // .logoutSuccessUrl("/login");
             //     // .addFilterBefore(customAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 

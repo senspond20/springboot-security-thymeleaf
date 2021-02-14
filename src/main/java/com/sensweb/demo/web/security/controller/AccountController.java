@@ -38,7 +38,7 @@ public class AccountController {
         return "login";
     }
     
-    @PostMapping(value = "/login")
+    @PostMapping(value = "/doLogin")
     public ModelAndView login(
             @RequestParam(value = "error", required = false) String error,
             @RequestParam(value = "logout", required = false) String logout) {
