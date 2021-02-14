@@ -1,4 +1,4 @@
-package com.sensweb.demo.web.security.ropository;
+package com.sensweb.demo.web.security.repository;
 
 import java.util.HashMap;
 import java.util.Map;
