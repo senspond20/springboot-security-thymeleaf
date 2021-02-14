@@ -1,58 +1,57 @@
 package com.sensweb.demo.web.security.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 import com.sensweb.demo.web.security.domain.Account;
-import com.sensweb.demo.web.security.ropository.AccountRepository;
+import com.sensweb.demo.web.security.service.AccountService;
+import com.sensweb.demo.web.security.service.dto.AccountSaveRequestDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@RestController
+@RequestMapping("/account")
 public class AccountController {
 
     // https://galid1.tistory.com/576
     @Autowired
-    private AccountRepository accountRepository;
+    private AccountService accountService;
 
     @GetMapping("/create")
-    @ResponseBody
-    public Account createAccout() {
-        Account account = new Account("senspond@gmail.com","1234","ROLE_USER");
+    public ResponseEntity<?> createAccount() {
+        return createAccout(AccountSaveRequestDto.builder().email("senshig@naver.com").password("1234").build());
+    }
 
-        // {noop} : 패스워드 인코더를 사용하지 않음
-        // Account account = new Account("senspond@gmail.com","{noop}1234","ROLE_USER");
-        return accountRepository.save(account);
+    @GetMapping("/update")
+    public void update() {
+
+    }
+
+    @PostMapping("/signUp")
+    @ResponseBody
+    public ResponseEntity<?> createAccout(@RequestBody AccountSaveRequestDto requestDto) {
+        System.out.println("@@#$#4 " + requestDto.getEmail());
+        Account account = accountService.save(requestDto);
+        if(account == null){
+            return ResponseEntity.badRequest().body("msg : 이미 존재하는 이메일입니다. : " + requestDto.getEmail());
+        }else{
+            return ResponseEntity.ok().body(account);
+        }    
+      
         // account.
     }
 
-    @GetMapping(value = "/login")
-    public String login(){
-        return "login";
+    @GetMapping("/show")
+    public List<Account> findAll(){
+        return accountService.findByAll();
     }
-    
-    @PostMapping(value = "/doLogin")
-    public ModelAndView login(
-            @RequestParam(value = "error", required = false) String error,
-            @RequestParam(value = "logout", required = false) String logout) {
 
-        ModelAndView model = new ModelAndView();
-        if (error != null) {
-            model.addObject("error", "Invalid username and password!");
-        }
-    
-        if (logout != null) {
-            model.addObject("msg", "You've been logged out successfully.");
-        }
-    
-        model.setViewName("/login");
-        return model;
-    }
 }

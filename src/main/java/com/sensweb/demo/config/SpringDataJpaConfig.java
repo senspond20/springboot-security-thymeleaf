@@ -59,7 +59,7 @@ public class SpringDataJpaConfig {
         properties.put("hibernate.dialect", "org.hibernate.dialect.MariaDB103Dialect");
         // properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 
-        properties.put("hibernate.hbm2ddl.auto", "create-drop"); // spring.jpa.hibernate.ddl-auto=create-drop
+        properties.put("hibernate.hbm2ddl.auto", "create"); // spring.jpa.hibernate.ddl-auto=create-drop
         return properties;
     }
 

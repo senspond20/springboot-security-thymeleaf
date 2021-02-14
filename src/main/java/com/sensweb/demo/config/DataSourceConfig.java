@@ -23,7 +23,7 @@ public class DataSourceConfig {
         config.setUsername("root");
         config.setPassword("1234");
 
-        config.setAutoCommit(false);
+        config.setAutoCommit(false); // autocommit 
         config.setConnectionInitSql("SELECT 1");
         config.setPoolName("springHikariCP");
         config.addDataSourceProperty("dataSource.cachePrepStmts", "true");
