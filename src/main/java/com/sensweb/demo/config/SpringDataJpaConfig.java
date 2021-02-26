@@ -46,20 +46,22 @@ public class SpringDataJpaConfig {
         factory.afterPropertiesSet();
         return factory.getObject();
     }
-
+    /**
+     * 
+     * @return
+     */
     private Properties properties(){
         Properties properties = new Properties();
     
         properties.put("hibernate.show_sql", "true");    // spring.jpa.properties.hibernate.show_sql=true
         properties.put("hibernate.format_sql","true");       // spring.jpa.properties.hibernate.format_sql=true
         properties.put("hibernate.use_sql_comments", "true");  // spring.jpa.properties.hibernate.use_sql_comments=true
-
-
+        
         // # spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MariaDB103Dialect
         properties.put("hibernate.dialect", "org.hibernate.dialect.MariaDB103Dialect");
         // properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 
-        properties.put("hibernate.hbm2ddl.auto", "create"); // spring.jpa.hibernate.ddl-auto=create-drop
+        properties.put("hibernate.hbm2ddl.auto", "update"); // spring.jpa.hibernate.ddl-auto=create-drop
         return properties;
     }
 

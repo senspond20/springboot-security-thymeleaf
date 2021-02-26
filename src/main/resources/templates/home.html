@@ -7,8 +7,8 @@
     <title>Spring Security</title>
 </head>
 <body>
-    <h1>어서오세요 ! [[${#httpServletRequest.remoteUser}]]!</h1>
-    <h2 th:text="${session.greeting}"></h2>
+    <h1>어서오세요 여봉~! [[${#httpServletRequest.remoteUser}]]!</h1>
+    <h2 th:text="${session.msg}"></h2>
     <form th:action="@{/logout}" method="post">
         <input type="submit" value ="Sign Out">
     </form>

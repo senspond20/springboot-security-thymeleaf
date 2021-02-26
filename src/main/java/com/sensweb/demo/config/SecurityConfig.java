@@ -45,8 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .csrf().disable()   // 테스트를 위해 CSRF 비활성화
             .authorizeRequests()
                 .antMatchers("/","/account/**","/login").permitAll() // /account/** , /login URL 요청에 대해서는 모든 접근 허용
-                .antMatchers("/user/**").hasRole(Authority.USER.name()) // admin/**   URL 요청에 대해서는 ROLE_USER 권한을 가지고 있어야 함. 내부적으로 접두어 "ROLE_"가 붙는다.
-                .antMatchers("/admin/**").hasRole(Authority.ADMIN.name())  // admin/** URL 요청에 대해서는 ROLE_ADMIN 권한을 가지고 있어야 함
+                .antMatchers("/user/**").hasRole("USER") // admin/**   URL 요청에 대해서는 ROLE_USER 권한을 가지고 있어야 함. Authority.USER.name() 내부적으로 접두어 "ROLE_"가 붙는다.
+                .antMatchers("/admin/**").hasRole("ADMIN")  // admin/** URL 요청에 대해서는 ROLE_ADMIN 권한을 가지고 있어야 함
                 .anyRequest().authenticated()  // 나머지 모든 요청에 대해서는 로그인을 요구함 
                 .and()
                 // 폼 기반 로그인하는 경우에 대해 설정함

@@ -10,7 +10,7 @@
     <div>당신이 맞는지 확인하겠소 ! </div>
     <form th:action ="@{/doLogin}" method ="post">
         <div><label for="username">User Name : </label><input type="text" id ="username" name="username"></div>
-        <div><label for="password">Password : </label><input type="text" id ="password" name="password"></div>
+        <div><label for="password">Password : </label><input type="password" id ="password" name="password"></div>
         <div><input type="submit" value="Sigin In" /></div>
           <!-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> -->
     </form> 
