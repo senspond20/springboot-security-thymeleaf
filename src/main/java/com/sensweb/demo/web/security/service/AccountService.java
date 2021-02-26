@@ -13,11 +13,10 @@ public interface AccountService extends UserDetailsService {
     
     public Account save(AccountSaveRequestDto requestDto);
 
-    @Secured("ROLE_ADMIN")
-    public List<Account> findByAll();
+    public List<Account> findAll();
+
+    public Account findByEmail(String email);
 
     @Secured("ROLE_ADMIN")
     public void update();
-
-
 }

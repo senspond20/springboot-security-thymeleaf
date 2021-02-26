@@ -53,13 +53,15 @@ public class AccountServiceImpl implements AccountService {
 
     /*
        모든 유저 조회
-       Admin 권한이 없으면 불가능.
     */ 
-    @Secured("ROLE_ADMIN")
-    public List<Account> findByAll(){
+    public List<Account> findAll(){
         return accountRepository.findAll();
     }
 
+    @Override
+    public Account findByEmail(String email) {
+        return accountRepository.findByEmail(email);
+    }
     /*
        유저 권한 수정
        Admin 권한이 없으면 불가능.
@@ -79,7 +81,7 @@ public class AccountServiceImpl implements AccountService {
         if(account == null) {
             throw new UsernameNotFoundException(username);
         }
-        // account.setPassword(passwordEncoder.encode(account.getPassword())); 
+        //account.setPassword(passwordEncoder.encode(account.getPassword())); 
         
         List<GrantedAuthority> authorities = new ArrayList<>();
         System.out.println("@@@@" + authorities);
@@ -94,6 +96,8 @@ public class AccountServiceImpl implements AccountService {
     private boolean matches(CharSequence rawPassword, String encodedPassword) {
         return passwordEncoder.matches(rawPassword, encodedPassword);
     }
+
+  
 
   
     

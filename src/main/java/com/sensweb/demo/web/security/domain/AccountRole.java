@@ -33,7 +33,7 @@ public class AccountRole{
             this.authority = Authority.ADMIN;
         }
         else if(empEmailList.contains(email)){
-            this.authority = Authority.EMP;
+            this.authority = Authority.VIP;
         }
         else{
             this.authority = Authority.USER;
